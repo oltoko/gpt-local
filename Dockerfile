@@ -1,5 +1,5 @@
 # Verwende ein offizielles Node-Image als Basis
-FROM node:18-bullseye as prep-alpaca
+FROM node:18-bullseye
 
 # Installiere die Abhängigkeiten für den Build
 RUN apt update
