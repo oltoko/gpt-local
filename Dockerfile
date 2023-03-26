@@ -3,13 +3,14 @@ FROM docker.io/node:18-bullseye
 
 # Installiere die Abhängigkeiten für den Build
 RUN apt update
-RUN apt install -y python3-venv
+RUN apt install -y build-essential python3-venv
 
 # Klone das Git-Repository
-RUN git clone https://github.com/cocktailpeanut/dalai.git && cd dalai
+RUN git clone https://github.com/cocktailpeanut/dalai.git
+WORKDIR /dalai
 
 # Benutze Torrent zum Download des Models
-COPY alpaca-torrent.patch /tmp/alpaca-torrent.patch
+COPY ./alpaca-torrent.patch /tmp/alpaca-torrent.patch
 RUN git apply /tmp/alpaca-torrent.patch
 
 # Installiere die NPM Abhängigkeiten
